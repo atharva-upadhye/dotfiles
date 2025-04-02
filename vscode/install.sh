@@ -53,75 +53,38 @@ else
 	echo "settings.json copied to $DEST_DIR"
 fi
 
-# Install VS Code Extensions
-extensions=(
-	aaron-bond.better-comments
-	# asvetliakov.vscode-neovim
-	bocovo.dbml-erd-visualizer
-	bradlc.vscode-tailwindcss
-	chwoerz.ts-worksheet
-	codezombiech.gitignore
-	DanielSanMedium.dscodegpt
-	dbaeumer.vscode-eslint
-	eamodio.gitlens
-	editorconfig.editorconfig
-	esbenp.prettier-vscode
-	foam.foam-vscode
-	foxundermoon.shell-format
-	GitHub.copilot
-	GitHub.copilot-chat
-	github.vscode-github-actions
-	Gruntfuggly.todo-tree
-	hediet.vscode-drawio
-	maptz.camelcasenavigation
-	matt-meyers.vscode-dbml
-	ms-azuretools.vscode-docker
-	ms-playwright.playwright
-	ms-python.debugpy
-	ms-python.python
-	ms-python.vscode-pylance
-	ms-vscode-remote.remote-containers
-	mtxr.sqltools
-	mushan.vscode-paste-image
-	PWABuilder.pwa-studio
-	qufiwefefwoyn.inline-sql-syntax
-	redhat.vscode-yaml
-	ritwickdey.liveserver
-	shd101wyy.markdown-preview-enhanced
-	streetsidesoftware.code-spell-checker
-	usernamehw.errorlens
-	vivaxy.vscode-conventional-commits
-	# vscodevim.vim
-	YoavBls.pretty-ts-errors
-	yzhang.markdown-all-in-one
-	# batisteo.vscode-django
-	# charliermarsh.ruff
-	# esbenp.prettier-vscode
-	# formulahendry.code-runner
-	# foxundermoon.shell-format
-	# mechatroner.rainbow-csv
-	# monosans.djlint
-	# ms-python.python
-	# ms-toolsai.jupyter
-	# ms-vscode.theme-predawnkit
-	# mtxr.sqltools
-	# mtxr.sqltools-driver-sqlite
-	# ritwickdey.LiveServer
-	# tamasfe.even-better-toml
-	# teabyii.ayu
-	# tomoki1207.pdf
-)
+# Ask the user if they want to install recommended extensions
+read -p "Do you want to install recommended VS Code extensions? (y/n): " install_extensions
 
-# Get a list of all currently installed extensions.
-installed_extensions=$(code --list-extensions)
+if [[ "$install_extensions" == "y" || "$install_extensions" == "Y" ]]; then
+	# Read extensions from vscode/extensions.jsonc
+	if [ -f "./vscode/extensions.jsonc" ]; then
+		# # Extract recommended extensions using jq (you might need to install jq if not installed)
+		# extensions=$(jq -r '.recommendations[]' ./vscode/extensions.jsonc)
 
-for extension in "${extensions[@]}"; do
-	if echo "$installed_extensions" | grep -qi "^$extension$"; then
-		echo "$extension is already installed. Skipping..."
+		# Use sed to remove comments (lines starting with // or /* ... */)
+		cleaned_json=$(sed '/^\s*\/\//d; /^\s*\/\*/,/\*\//d' ./vscode/extensions.jsonc | perl -0777 -pe 's/\s*,\s*(\}|\])/\1/g')
+
+		# Use jq to extract recommendations from cleaned JSON
+		extensions=$(echo "$cleaned_json" | jq -r '.recommendations[]')
+
+		# # Get a list of all currently installed extensions
+		# installed_extensions=$(code --list-extensions)
+
+		# # Loop through recommended extensions and install them if not already installed
+		# for extension in $extensions; do
+		# 	if echo "$installed_extensions" | grep -qi "^$extension$"; then
+		# 		echo "$extension is already installed. Skipping..."
+		# 	else
+		# 		echo "Installing $extension..."
+		# 		code --install-extension "$extension"
+		# 	fi
+		# done
+
+		echo "VS Code extensions have been installed."
 	else
-		echo "Installing $extension..."
-		code --install-extension "$extension"
+		echo "No extensions.jsonc file found, skipping extension installation."
 	fi
-done
-
-echo "VS Code extensions have been installed."
+else
+	echo "Skipping extension installation."
+fi
