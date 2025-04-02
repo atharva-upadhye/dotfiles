@@ -38,7 +38,7 @@ if [ -f "$DEST_DIR/settings.json" ]; then
 		TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S_%3N")
 
 		# Create a backup with timestamp and .bak extension
-		mv "$DEST_DIR/settings.json" "$DEST_DIR/settings.json.BKP_$TIMESTAMP.bak"
+		mv "$DEST_DIR/settings.json" "./vscode/settings.json.BKP_$TIMESTAMP.bak"
 		echo "Backup created: settings.json.BKP_$TIMESTAMP.bak"
 
 		# Move the new settings.json to the destination
@@ -56,6 +56,7 @@ fi
 # Install VS Code Extensions
 extensions=(
 	aaron-bond.better-comments
+	# asvetliakov.vscode-neovim
 	bocovo.dbml-erd-visualizer
 	bradlc.vscode-tailwindcss
 	chwoerz.ts-worksheet
@@ -67,6 +68,8 @@ extensions=(
 	esbenp.prettier-vscode
 	foam.foam-vscode
 	foxundermoon.shell-format
+	GitHub.copilot
+	GitHub.copilot-chat
 	github.vscode-github-actions
 	Gruntfuggly.todo-tree
 	hediet.vscode-drawio
@@ -74,6 +77,9 @@ extensions=(
 	matt-meyers.vscode-dbml
 	ms-azuretools.vscode-docker
 	ms-playwright.playwright
+	ms-python.debugpy
+	ms-python.python
+	ms-python.vscode-pylance
 	ms-vscode-remote.remote-containers
 	mtxr.sqltools
 	mushan.vscode-paste-image
@@ -85,6 +91,7 @@ extensions=(
 	streetsidesoftware.code-spell-checker
 	usernamehw.errorlens
 	vivaxy.vscode-conventional-commits
+	# vscodevim.vim
 	YoavBls.pretty-ts-errors
 	yzhang.markdown-all-in-one
 	# batisteo.vscode-django

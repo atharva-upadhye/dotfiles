@@ -20,6 +20,9 @@
 			"strings": "on"
 		}
 	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
+	},
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
 		"editor.detectIndentation": false,
