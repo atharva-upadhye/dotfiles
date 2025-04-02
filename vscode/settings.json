@@ -1,0 +1,131 @@
+{
+	"[cpp]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+	"[dockercompose]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
+	},
+	"[dockerfile]": {
+		"editor.defaultFormatter": "ms-azuretools.vscode-docker"
+		// "editor.defaultFormatter": "foxundermoon.shell-format"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features",
+		"editor.quickSuggestions": {
+			"comments": "off",
+			"other": "on",
+			"strings": "on"
+		}
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml",
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2
+	},
+	"application.shellEnvironmentResolutionTimeout": 15,
+	"diffEditor.experimental.showMoves": true,
+	"diffEditor.ignoreTrimWhitespace": false,
+	"diffEditor.maxComputationTime": 0,
+	"diffEditor.renderSideBySide": true,
+	"editor.accessibilitySupport": "off",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always",
+		"source.organizeImports": "never"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.guides.bracketPairs": "active",
+	"editor.hover.delay": 800,
+	"editor.insertSpaces": false,
+	"editor.minimap.autohide": true,
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
+	"editor.renderWhitespace": "all",
+	"editor.rulers": [
+		80
+	],
+	"editor.tabSize": 2,
+	"eslint.format.enable": true,
+	"eslint.problems.shortenToSingleLine": true,
+	"eslint.rules.customizations": [
+		{
+			"rule": "sort-keys",
+			"severity": "warn"
+		}
+	],
+	"files.associations": {
+		"*.css": "tailwindcss",
+		"*.yml": "yaml",
+		"LICENSE": "plaintext"
+	},
+	"files.eol": "\n",
+	"files.exclude": {
+		"node_modules*": true
+	},
+	"foam.completion.useAlias": "whenPathDiffersFromTitle",
+	"foam.edit.linkReferenceDefinitions": "withExtensions",
+	"foam.openDailyNote.filenameFormat": "yyyy/mm/yyyy-mm-dd",
+	"foam.openDailyNote.titleFormat": "yyyy-mm-dd",
+	"git.ignoreRebaseWarning": true,
+	"git.openRepositoryInParentFolders": "always",
+	"github.copilot.editor.enableAutoCompletions": true,
+	"gitlens.views.commitDetails.files.layout": "tree",
+	"gitlens.views.scm.grouped.views": {
+		"searchAndCompare": true
+	},
+	"hediet.vscode-drawio.resizeImages": null,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"jest.runMode": "on-demand",
+	"js/ts.implicitProjectConfig.checkJs": true,
+	"markdownlint.config": {
+		"extends": "markdownlint/style/prettier",
+		"first-line-heading": false,
+		"no-hard-tabs": false,
+		"ul-indent": false
+	},
+	"open-all-files.maxFilesWithoutConfirmation": 20,
+	"open-all-files.recursive": true,
+	// mushan.vscode-paste-image
+	"pasteImage.path": "${currentFileDir}/_attachments",
+	"pasteImage.prefix": "./",
+	"playwright.reuseBrowser": true,
+	"prettier.tabWidth": 2,
+	"prettier.useTabs": true,
+	"security.workspace.trust.untrustedFiles": "open",
+	"tailwindCSS.experimental.classRegex": [
+		[
+			"cva\\(([^)]*)\\)",
+			"[\"'`]([^\"'`]*).*?[\"'`]"
+		]
+	],
+	"tailwindCSS.includeLanguages": {
+		"css": "css",
+		"javascript": "javascript",
+		"plaintext": "html"
+	},
+	// "terminal.external.windowsExec": "C:\\Windows\\System32\\cmd.exe",
+	"terminal.external.windowsExec": "C:\\Users\\Atharva\\AppData\\Local\\Programs\\Git\\git-bash.exe",
+	"terminal.integrated.defaultProfile.windows": "Git Bash",
+	"terminal.integrated.fontSize": 14,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"update.enableWindowsBackgroundUpdates": false,
+	"vscodeGitCommit.variables": {
+		"prefix": "keke"
+	},
+	"win-ca.inject": "append",
+	"window.autoDetectColorScheme": true,
+	"window.zoomLevel": 0,
+	"workbench.editor.wrapTabs": true,
+	"workbench.sideBar.location": "right"
+}
