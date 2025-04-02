@@ -20,14 +20,14 @@
 			"strings": "on"
 		}
 	},
-	"[shellscript]": {
-		"editor.defaultFormatter": "foxundermoon.shell-format"
-	},
 	"[markdown]": {
 		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
 		"editor.detectIndentation": false,
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4
+	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
 	},
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml",
@@ -106,6 +106,19 @@
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
 	"security.workspace.trust.untrustedFiles": "open",
+	// for mtxr.sqltools
+	"sqltools.connections": [
+		{
+			"askForPassword": true,
+			"database": "test_db_1",
+			"driver": "PostgreSQL",
+			"name": "postgres_test_db_t",
+			"port": 5432,
+			"previewLimit": 50,
+			"server": "localhost",
+			"username": "test_usr_1"
+		}
+	],
 	"tailwindCSS.experimental.classRegex": [
 		[
 			"cva\\(([^)]*)\\)",
