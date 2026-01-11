@@ -39,12 +39,13 @@
 
 services.xserver = {
 	enable = true;
-	autoRepeatDelay = 200;
-	autoRepeatInterval = 35;
-	windowManager.qtile.enable = true;
+	windowManager.leftwm.enable = true;
 };
-services.displayManager.ly.enable = true;
-  
+services.displayManager = {
+	ly.enable = true;
+	defaultSession = "none+leftwm";
+};
+
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -82,7 +83,6 @@ services.displayManager.ly.enable = true;
    # wget
 	git
   ];
-
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 

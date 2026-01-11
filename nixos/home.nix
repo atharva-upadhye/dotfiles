@@ -16,6 +16,10 @@
 		shellAliases = {
 			btw = "echo I use nixos, btw";
 		};
-	}; 
+	};
+	xresources.properties = {
+		"XTerm*background" = "black";
+		"XTerm*foreground" = "white";
+	};
 }
 
