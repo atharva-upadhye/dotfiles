@@ -37,15 +37,14 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-services.xserver = {
-	enable = true;
-	windowManager.leftwm.enable = true;
-};
-services.displayManager = {
-	ly.enable = true;
-	defaultSession = "none+leftwm";
-};
-
+  services.xserver = {
+    enable = true;
+    windowManager.leftwm.enable = true;
+  };
+  services.displayManager = {
+    ly.enable = true;
+    defaultSession = "none+leftwm";
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -81,9 +80,9 @@ services.displayManager = {
   environment.systemPackages = with pkgs; [
    # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
    # wget
-	git
+	  git
   ];
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 
 
