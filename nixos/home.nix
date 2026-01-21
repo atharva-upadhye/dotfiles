@@ -19,7 +19,7 @@
 		
 		settings = {
 			# Your usual alacritty settings here
-			font.size = 12;
+			font.size = 10;
 		};
 	};
 	programs.brave = {
