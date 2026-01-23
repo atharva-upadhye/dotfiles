@@ -78,7 +78,7 @@
   # List services that you want to enable:
   services = {
     displayManager = {
-      defaultSession = "none+leftwm";
+      defaultSession = "none+qtile";
       ly.enable = true;
     };
     # Enable touchpad support (enabled default in most desktopManager).
@@ -100,7 +100,7 @@
 
     xserver = {
       enable = true;
-      windowManager.leftwm.enable = true;
+      windowManager.qtile.enable = true;
       # Enable the X11 windowing system.
       # enable = true;
 

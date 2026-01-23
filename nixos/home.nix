@@ -5,13 +5,24 @@
 }:
 {
   home = {
+    file = {
+      ".config/qtile" = {
+        recursive = true;
+        source = ./config/qtile;
+      };
+      ".config/nvim" = {
+        recursive = true;
+        source = ./config/nvim;
+      };
+    };
     homeDirectory = "/home/atharva";
     packages = with pkgs; [
+      gcc
       neovim
+      nil
       nixfmt
-      # nvim
       tree
-      # vim
+      ripgrep
       # wget
     ];
     stateVersion = "25.11";
