@@ -5,6 +5,7 @@ from libqtile.utils import guess_terminal
 import os
 import subprocess
 import glob
+import psutil
 
 
 mod = "mod4"
@@ -223,11 +224,12 @@ screens = [
                     fmt = '{}',
                 ),
                 sep,
-                widget.CPU(
+                widget.GenPollText(
+                    update_interval = 2,
+                    func = lambda: f"CPU: {psutil.cpu_percent(interval=None):.0f}%",
                     foreground = colors[4],
                     padding = 8, 
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e btop')},
-                    format="CPU: {load_percent}%",
                 ),
                 sep,
                 widget.Memory(
