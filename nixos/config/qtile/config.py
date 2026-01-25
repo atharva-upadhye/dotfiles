@@ -4,6 +4,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import os
 import subprocess
+import glob
 
 
 mod = "mod4"
@@ -152,6 +153,12 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 sep = widget.Sep(linewidth=1, padding=8, foreground=colors[9])
+def has_battery():
+    power_dir = "/sys/class/power_supply"
+    if not os.path.exists(power_dir):
+        return False
+    batteries = glob.glob(os.path.join(power_dir, "BAT*"))
+    return len(batteries) > 0
 
 screens = [
     Screen(
@@ -241,7 +248,7 @@ screens = [
                     visible_on_warn = False,
                 ),
                 sep,
-                widget.Battery(
+                widget.TextBox("VM") if not has_battery() else widget.Battery(
                     foreground=colors[6],           # pick a palette slot you like
                     padding=8,
                     update_interval=5,
