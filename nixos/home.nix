@@ -49,20 +49,13 @@ in
     };
   };
   xdg = {
-    configFile = {
-      "qtile" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/qtile";
-        recursive = true;
-      };
-      "nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/nvim";
-        recursive = true;
-      };
-      "alacritty" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/alacritty";
-        recursive = true;
-      };
-    };
+    configFile = builtins.listToAttrs (map (name: { 
+      inherit name; 
+      value = { 
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/${name}"; 
+        recursive = true; 
+      }; 
+    }) [ "qtile" "nvim" "alacritty" "rofi" ]);
   };
   xresources = {
     properties = {
