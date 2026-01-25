@@ -6,6 +6,7 @@ import os
 import subprocess
 import glob
 import psutil
+import threading
 
 
 mod = "mod4"
@@ -328,3 +329,18 @@ wl_xcursor_theme = None
 wl_xcursor_size = 24
 
 wmname = "LG3D"
+
+@hook.subscribe.startup_once
+def autostart():
+    # Set display resolution in a separate thread to avoid blocking Qtile startup
+    threading.Thread(
+        target=lambda: (
+            subprocess.run(
+                ["wlr-randr" if qtile.core.name == "wayland" else "xrandr", "--output", "Virtual-1", "--mode", "1440x900"],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+        ),
+        daemon=True
+    ).start()

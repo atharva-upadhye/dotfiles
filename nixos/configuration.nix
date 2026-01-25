@@ -33,6 +33,7 @@
     home-manager
     git
     nodejs_20
+    wlr-randr
   ];
 
   # Select internationalisation properties.
