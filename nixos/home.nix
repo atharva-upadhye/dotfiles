@@ -4,7 +4,7 @@
   ...
 }:
 let
-  dotfilesDirectory = "${config.home.homeDirectory}/gh/atharva-upadhye/dotfiles";
+  dotfilesDir = "${config.home.homeDirectory}/gh/atharva-upadhye/dotfiles/config";
 in
 {
   home = {
@@ -17,32 +17,22 @@ in
       tree
       ripgrep
       # wget
-    ];
-    stateVersion = "25.11";
-    username = "atharva";
-  };
-  programs = {
-    alacritty = {
-      enable = true;
       # This wraps the binary with the environment variable
       # doing this is important since GPU config is not working out of the box for alacritty
-      package = (
-        pkgs.alacritty.overrideAttrs (oldAttrs: {
-          nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+      (
+        alacritty.overrideAttrs (oldAttrs: {
+          nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ makeWrapper ];
           postInstall = (oldAttrs.postInstall or "") + ''
             wrapProgram $out/bin/alacritty \
             	--set LIBGL_ALWAYS_SOFTWARE 1
           '';
         })
-      );
-
-      settings = {
-        # Your usual alacritty settings here
-        font = {
-          size = 10;
-        };
-      };
-    };
+      )
+    ];
+    stateVersion = "25.11";
+    username = "atharva";
+  };
+  programs = {
     bash = {
       enable = true;
       shellAliases = {
@@ -61,11 +51,15 @@ in
   xdg = {
     configFile = {
       "qtile" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDirectory}/nixos/config/qtile";
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/qtile";
         recursive = true;
       };
       "nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDirectory}/nixos/config/nvim";
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/nvim";
+        recursive = true;
+      };
+      "alacritty" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/alacritty";
         recursive = true;
       };
     };
