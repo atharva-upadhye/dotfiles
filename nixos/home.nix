@@ -3,18 +3,11 @@
   pkgs,
   ...
 }:
+let
+  dotfilesDirectory = "${config.home.homeDirectory}/gh/atharva-upadhye/dotfiles";
+in
 {
   home = {
-    file = {
-      ".config/qtile" = {
-        recursive = true;
-        source = ./config/qtile;
-      };
-      ".config/nvim" = {
-        recursive = true;
-        source = ./config/nvim;
-      };
-    };
     homeDirectory = "/home/atharva";
     packages = with pkgs; [
       gcc
@@ -63,6 +56,18 @@
     };
     git = {
       enable = true;
+    };
+  };
+  xdg = {
+    configFile = {
+      "qtile" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDirectory}/nixos/config/qtile";
+        recursive = true;
+      };
+      "nvim" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDirectory}/nixos/config/nvim";
+        recursive = true;
+      };
     };
   };
   xresources = {
