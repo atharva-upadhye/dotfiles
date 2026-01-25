@@ -6,12 +6,17 @@
       url = "github:nix-community/home-manager/release-25.11";
     };
     nixpkgs.url = "nixpkgs/nixos-25.11";
+    oxwm = {
+      url = "github:tonybanters/oxwm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
       home-manager,
       nixpkgs,
       self,
+      oxwm,
       ...
     }:
     {
@@ -19,6 +24,7 @@
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
+          oxwm.nixosModules.default
           {
             home-manager = {
               backupFileExtension = "backup";

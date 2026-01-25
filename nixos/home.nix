@@ -55,7 +55,7 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/${name}"; 
         recursive = true; 
       }; 
-    }) [ "qtile" "nvim" "alacritty" "rofi" ]);
+    }) [ "nvim" "alacritty" "rofi" "oxwm" ]);
   };
   xresources = {
     properties = {

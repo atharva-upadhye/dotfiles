@@ -33,7 +33,6 @@
     home-manager
     git
     nodejs_20
-    wlr-randr
   ];
 
   # Select internationalisation properties.
@@ -79,7 +78,7 @@
   # List services that you want to enable:
   services = {
     displayManager = {
-      defaultSession = "none+qtile";
+      defaultSession = "none+oxwm";
       ly.enable = true;
     };
     # Enable touchpad support (enabled default in most desktopManager).
@@ -101,7 +100,7 @@
 
     xserver = {
       enable = true;
-      windowManager.qtile.enable = true;
+      windowManager.oxwm.enable = true;
       # Enable the X11 windowing system.
       # enable = true;
 
