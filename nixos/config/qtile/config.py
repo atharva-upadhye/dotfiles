@@ -146,7 +146,7 @@ layouts = [
 
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font Propo Bold",
-    fontsize=16,
+    fontsize=12,
     padding=0,
     background=colors[0],
 )
@@ -155,6 +155,13 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 sep = widget.Sep(linewidth=1, padding=8, foreground=colors[9])
+sep_small = widget.TextBox(
+    text = '|',
+    font = "JetBrainsMono Nerd Font Propo Bold",
+    foreground = colors[9],
+    padding = 2,
+    fontsize = 14
+)
 def has_battery():
     power_dir = "/sys/class/power_supply"
     if not os.path.exists(power_dir):
@@ -167,18 +174,19 @@ screens = [
         top=bar.Bar(
             widgets = [
                 widget.Spacer(length = 8),
-                widget.Image(
-                    filename = "~/.config/qtile/icons/tonybtw.png",
-                    scale = "False",
-                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("qtilekeys-yad")},
+                widget.TextBox(
+                    text = "🔍",
+                    padding = 4,
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun -show-icons")},
                 ),
+                sep_small,
                 widget.Prompt(
                     font = "Ubuntu Mono",
                     fontsize=14,
                     foreground = colors[1]
                 ),
                 widget.GroupBox(
-                    fontsize = 18,
+                    fontsize = 14,
                     margin_y = 5,
                     margin_x = 5,
                     padding_y = 0,
@@ -194,35 +202,22 @@ screens = [
                     other_current_screen_border = colors[7],
                     other_screen_border = colors[4],
                 ),
-                widget.TextBox(
-                    text = '|',
-                    font = "JetBrainsMono Nerd Font Propo Bold",
-                    foreground = colors[9],
-                    padding = 2,
-                    fontsize = 14
-                ),
+                sep_small,
                 widget.CurrentLayout(
                     foreground = colors[1],
                     padding = 5
                 ),
-                widget.TextBox(
-                    text = '|',
-                    font = "JetBrainsMono Nerd Font Propo Bold",
-                    foreground = colors[9],
-                    padding = 2,
-                    fontsize = 14
-                ),
+                sep_small,
                 widget.WindowName(
                     foreground = colors[6],
                     padding = 8,
                     max_chars = 40
                 ),
-                widget.GenPollText(
-                    update_interval = 300,
-                    func = lambda: subprocess.check_output("printf $(uname -r)", shell=True, text=True),
-                    foreground = colors[3],
+                sep,
+                widget.Volume(
+                    foreground = colors[7],
                     padding = 8, 
-                    fmt = '{}',
+                    fmt = 'Vol: {}',
                 ),
                 sep,
                 widget.GenPollText(
@@ -267,17 +262,11 @@ screens = [
                     },
                 ),
                 sep,
-                widget.Volume(
-                    foreground = colors[7],
-                    padding = 8, 
-                    fmt = 'Vol: {}',
-                ),
-                sep,
                 widget.Clock(
                     foreground = colors[8],
                     padding = 8, 
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('notify-date')},
-                    format = "%a, %b %d - %H:%M",
+                    format = "%a %b %d  %H:%M %p",
                 ),
                 widget.Systray(padding = 6),
                 widget.Spacer(length = 8),
