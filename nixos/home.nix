@@ -9,7 +9,13 @@ in
 {
   home = {
     homeDirectory = "/home/atharva";
-    file = {
+    file = builtins.listToAttrs (map (name: { 
+      inherit name;
+      value = {
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/${name}"; 
+        recursive = true;
+      };
+    }) [ ".gitconfig" ".gitignore_global" ]) // {
       "_/sh" = {
         source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/sh";
         recursive = true;
