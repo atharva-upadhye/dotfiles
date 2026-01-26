@@ -1,0 +1,30 @@
+# Install dependencies
+install:
+    uv sync --frozen || uv sync
+    @echo "Dependencies installed!"
+
+# Run the main script
+run:
+    uv run python main.py
+
+# # Run tests (if you add tests later)
+# test:
+#     uv run pytest || echo "No tests found"
+
+# Clean build artifacts
+clean:
+    rm -rf .venv
+    rm -rf dist
+    rm -rf build
+    rm -rf *.egg-info
+    @echo "Cleaned build artifacts"
+
+# # Format code
+# fmt:
+#     uv run ruff format . || echo "ruff not available"
+#     uv run black . || echo "black not available"
+
+# # Lint code
+# lint:
+#     uv run ruff check . || echo "ruff not available"
+#     uv run pylint . || echo "pylint not available"
