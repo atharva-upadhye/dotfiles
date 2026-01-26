@@ -23,6 +23,7 @@ in
     };
     packages = with pkgs; [
       gcc
+      fzf
       neovim
       nil
       nixfmt
@@ -47,9 +48,15 @@ in
   programs = {
     bash = {
       enable = true;
-      shellAliases = {
-        btw = "echo I use nixos, btw";
-      };
+      shellOptions = [
+        "histappend"
+        "extglob"
+        "globstar"
+        "checkjobs"
+      ];
+      historyControl = [ "ignoredups" "ignorespace" ];
+      historySize = 10000;
+      historyFileSize = 100000;
       initExtra = ''
         alias btw='echo I use nixos, btw'
         
@@ -64,6 +71,9 @@ in
       enable = true;
       package = pkgs.brave;
       # extensions = [ { id = ""; }];
+    };
+    fzf = {
+      enableBashIntegration = true;
     };
     git = {
       enable = true;
