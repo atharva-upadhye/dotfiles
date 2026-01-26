@@ -4,11 +4,17 @@
   ...
 }:
 let
-  dotfilesDir = "${config.home.homeDirectory}/gh/atharva-upadhye/dotfiles/config";
+  dotfilesDir = "${config.home.homeDirectory}/_/gh/atharva-upadhye/dotfiles";
 in
 {
   home = {
     homeDirectory = "/home/atharva";
+    file = {
+      "_/sh" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/sh";
+        recursive = true;
+      };
+    };
     packages = with pkgs; [
       gcc
       neovim
@@ -38,6 +44,15 @@ in
       shellAliases = {
         btw = "echo I use nixos, btw";
       };
+      initExtra = ''
+        alias btw='echo I use nixos, btw'
+        
+        # Source common shell functions
+        [[ -f "$HOME/_/sh/sh.sh" ]] && . "$HOME/_/sh/sh.sh"
+        
+        # Source bash-specific configurations
+        [[ -f "$HOME/_/sh/bash.sh" ]] && . "$HOME/_/sh/bash.sh"
+      '';
     };
     brave = {
       enable = true;
@@ -52,7 +67,7 @@ in
     configFile = builtins.listToAttrs (map (name: { 
       inherit name; 
       value = { 
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/${name}"; 
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/${name}"; 
         recursive = true; 
       }; 
     }) [ "nvim" "alacritty" "rofi" "oxwm" ]);

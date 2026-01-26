@@ -19,6 +19,9 @@
       oxwm,
       ...
     }:
+    let
+      system = "aarch64-linux";
+    in
     {
       nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
         modules = [
@@ -34,14 +37,11 @@
             };
           }
         ];
-        system = "aarch64-darwin";
+        inherit system;
       };
-
       # Standalone Home Manager configuration (no sudo needed)
       homeConfigurations.atharva = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "aarch64-linux";
-        };
+        pkgs = nixpkgs.legacyPackages.${system};
         modules = [ ./home.nix ];
       };
     };
