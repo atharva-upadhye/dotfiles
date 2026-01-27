@@ -15,12 +15,7 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/${name}"; 
         recursive = true;
       };
-    }) [ ".gitconfig" ".gitignore_global" ]) // {
-      "_/sh" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/sh";
-        recursive = true;
-      };
-    };
+    }) [ ".gitconfig" ".gitignore_global" ]);
     packages = with pkgs; [
       gcc
       fzf
@@ -58,13 +53,7 @@ in
       historySize = 10000;
       historyFileSize = 100000;
       initExtra = ''
-        alias btw='echo I use nixos, btw'
-        
-        # Source common shell functions
         [[ -f "$HOME/_/sh/sh.sh" ]] && . "$HOME/_/sh/sh.sh"
-        
-        # Source bash-specific configurations
-        [[ -f "$HOME/_/sh/bash.sh" ]] && . "$HOME/_/sh/bash.sh"
       '';
     };
     brave = {
