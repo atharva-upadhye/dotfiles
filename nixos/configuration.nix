@@ -80,6 +80,7 @@
   # };
   programs = {
     sway.enable = true;
+    hyprland.enable = true;
     # wrapperFeatures.gtk = true; # Enable GTK integration
   };
 
