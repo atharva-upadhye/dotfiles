@@ -24,6 +24,7 @@ in
       nixfmt
       tree
       ripgrep
+      waybar
       # wget
       # This wraps the binary with the environment variable
       # doing this is important since GPU config is not working out of the box for alacritty
@@ -75,7 +76,7 @@ in
         source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/${name}"; 
         recursive = true; 
       }; 
-    }) [ "nvim" "alacritty" "rofi" "oxwm" "sway" "hypr" ]);
+    }) [ "nvim" "alacritty" "rofi" "oxwm" "sway" "hypr" "waybar" ]);
   };
   xresources = {
     properties = {
