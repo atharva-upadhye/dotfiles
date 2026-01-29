@@ -27,6 +27,10 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  environment.variables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -74,11 +78,15 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs = {
+    sway.enable = true;
+    # wrapperFeatures.gtk = true; # Enable GTK integration
+  };
 
   # List services that you want to enable:
   services = {
     displayManager = {
-      defaultSession = "none+oxwm";
+      defaultSession = "sway";
       ly.enable = true;
     };
     # Enable touchpad support (enabled default in most desktopManager).
