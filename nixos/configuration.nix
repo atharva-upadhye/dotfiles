@@ -27,9 +27,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  environment.variables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -79,7 +76,12 @@
   #   enableSSHSupport = true;
   # };
   programs = {
-    sway.enable = true;
+    sway = {
+      enable = true;
+      extraSessionCommands = ''
+        export WLR_NO_HARDWARE_CURSORS=1
+      '';
+    };
     hyprland.enable = true;
     # wrapperFeatures.gtk = true; # Enable GTK integration
   };
