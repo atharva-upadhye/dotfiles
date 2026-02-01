@@ -21,10 +21,7 @@
         "7": "7",
         "8": "8",
         "9": "9",
-        "10": "10",
-        "urgent": "󰓇",
-        "focused": "󰮯",
-        "default": "󰊓"
+        "10": "10"
       }
     },
     
@@ -37,52 +34,52 @@
     "idle_inhibitor": {
       "format": "{icon}",
       "format-icons": {
-        "activated": "󰒳",
-        "deactivated": "󰒲"
+        "activated": "🌙",
+        "deactivated": "☀️"
       }
     },
     
     "pulseaudio": {
       "format": "{icon} {volume}%",
-      "format-muted": "󰝟 Muted",
-      "format-source": "󰍬 {volume}%",
-      "format-source-muted": "󰍭",
+      "format-muted": "🔇 Muted",
+      "format-source": "🎤 {volume}%",
+      "format-source-muted": "🎙️",
       "format-icons": {
-        "headphone": "󰋋",
-        "hands-free": "󰋋",
-        "headset": "󰋋",
-        "phone": "󰄜",
-        "portable": "󰦧",
-        "car": "󰄋",
-        "default": ["󰕿", "󰖀", "󰕾"]
+        "headphone": "🎧",
+        "hands-free": "📞",
+        "headset": "🎮",
+        "phone": "📱",
+        "portable": "📲",
+        "car": "🚗",
+        "default": ["🔈", "🔉", "🔊"]
       },
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
       "on-click-right": "pactl set-sink-volume @DEFAULT_SINK@ 50%"
     },
     
     "network": {
-      "format-wifi": "󰤨 {signalStrength}%",
-      "format-ethernet": "󰈀 Connected",
-      "format-linked": "󰈀 {ifname} (No IP)",
-      "format-disconnected": "󰤭 Disconnected",
+      "format-wifi": "📶 {signalStrength}%",
+      "format-ethernet": "🌐 Connected",
+      "format-linked": "🔗 {ifname} (No IP)",
+      "format-disconnected": "❌ Disconnected",
       "format-alt": "{ifname}: {ipaddr}/{cidr}",
       "on-click-right": "nm-connection-editor"
     },
     
     "cpu": {
-      "format": "󰻠 {usage}%",
+      "format": "💻 {usage}%",
       "interval": 5
     },
     
     "memory": {
-      "format": "󰍛 {}%",
+      "format": "💾 {}%",
       "interval": 5
     },
     
     "temperature": {
       "critical-threshold": 80,
       "format": "{icon} {temperatureC}°C",
-      "format-icons": ["󰈸", "󰈷", "󰈶"]
+      "format-icons": ["❄️", "🌡️", "🔥"]
     },
     
     "battery": {
@@ -91,11 +88,11 @@
         "critical": 15
       },
       "format": "{icon} {capacity}%",
-      "format-charging": "󰂄 {capacity}%",
-      "format-plugged": "󰂄 {capacity}%",
+      "format-charging": "🔌 {capacity}%",
+      "format-plugged": "⚡ {capacity}%",
       "format-alt": "{icon} {time}",
-      "format-full": "󰁹 {capacity}%",
-      "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+      "format-full": "✅ {capacity}%",
+      "format-icons": ["🪫", "⚠️", "🔴", "🟠", "🟡", "🟢", "💚", "🔋", "💪", "🌟"]
     },
     
     "clock": {
