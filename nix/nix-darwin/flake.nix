@@ -15,6 +15,7 @@
       environment.systemPackages =
         [ pkgs.vim
         ];
+      fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
@@ -34,6 +35,25 @@
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
+
+      # Set primary user for user-specific options
+      system.primaryUser = "atupadhy";
+
+      system.defaults = {
+        dock = {
+          autohide = true;
+          persistent-apps = [
+            "/Applications/Slack.app"
+            "/Applications/Google Chrome.app"
+            "/Applications/Brave Browser.app"
+            "/Applications/Cursor.app"
+            "/Applications/Obsidian.app"
+            "/Applications/WhatsApp.app"
+          ];
+        };
+        finder.ShowPathbar = true;
+        NSGlobalDomain."com.apple.swipescrolldirection" = true;
+      };
 
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
