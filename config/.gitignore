@@ -1,0 +1,22 @@
+# IDE configs
+.idea/
+.vscode/
+
+# .nvmrc
+
+.yarn
+.pnp.*
+AGENTS.md
+.cursor/
+
+# to remove
+.pnpm-store/
+.trash
+TODO.md
+
+graphql.json
+openapi.json
+e2e/
+playwright.config.ts
+playwright-report/
+test-results/

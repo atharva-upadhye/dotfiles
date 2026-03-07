@@ -1,0 +1,8 @@
+[user]
+	email = atupadhy@redhat.com
+	name = Atharva Upadhye
+[core]
+	excludesfile = /Users/atupadhy/.gitignore
+	editor = sh -c 'cursor --wait "$@" || code --wait "$@" || nvim --wait "$@" || vim --wait "$@" || nano --wait "$@"' -
+[pull]
+	rebase = false

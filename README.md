@@ -1,7 +1,3 @@
-once:
-```sh
-nix run home-manager -- switch --flake ~/_/dotfiles/nix/nix-darwin
-```
 
 
 ```sh
